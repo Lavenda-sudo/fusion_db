@@ -9,7 +9,7 @@
 {% block body %}
       <div class="container">
         <h2>Add new product</h2>
-          <form action="{% url 'add' %}" method="post">
+          <form action="{% url 'add' %}" method="post" encytype="multipart/form-data">
               {% csrf_token %}
 <!--              {{ form.as_p }}-->
               {% bootstrap_form form %}

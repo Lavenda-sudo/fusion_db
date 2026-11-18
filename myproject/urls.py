@@ -21,9 +21,29 @@ from myapp import views
 from django.contrib import admin
 from django.urls import path
 from myapp import views
-
+from django.contrib import admin
+from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from myapp import views
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, include
+from myapp import views
+from myproject import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('new-products/', views.add, name='add'),
+    path('delete-products/<int:id>', views.delete_products, name='delete'),
+    path('edit-products/<int:id>', views.edit_products, name='edit'),
+    path('details/<int:id>', views.details, name='details'),
+    path('accounts/login', views.signin, name='login'),
+    path('accounts/signup', views.signup, name='register'),
+    path('accounts/logout', views.signout, name='sign-out'),
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# /delete-products/100
